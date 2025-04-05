@@ -1,0 +1,7 @@
+{
+  "type": "module",
+  "dependencies": {
+    "@pulumi/github": "^6.7.0",
+    "@pulumi/pulumi": "^3.160.0"
+  }
+}
