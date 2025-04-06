@@ -2,7 +2,6 @@ import type React from "react"
 import {
   Code,
   Database,
-  Github,
   Globe,
   Server,
   Zap,

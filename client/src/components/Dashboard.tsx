@@ -6,14 +6,24 @@ import { Link } from "react-router-dom"
 import io from "socket.io-client";
 import { useEffect, useState } from "react"
 
+
+interface PR {
+  _id: string
+  prId: string
+  sentiment: number
+  carbonImpact: number
+  points: number
+  userId: string
+}
+
 export default function Dashboard() {
 
   const [prId, setPrId] = useState("")
   const [isLoading, setIsLoading] = useState(false)
-  const [userId, setUserId] = useState(null);
+  const [userId, setUserId] = useState<string | null>(null);
   const [githubToken, setGithubToken] = useState("");
   const [repo, setRepo] = useState("");
-  const [prs, setPrs] = useState([]);
+  const [prs, setPrs] = useState<PR[]>([]);
 
   const socket = io(import.meta.env.VITE_API_URL, {
     transports: ["websocket"], // prevent fallback polling weirdness
@@ -74,7 +84,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     if (userId) {
-      socket.on(`prUpdate:${userId}`, (pr) => setPrs((prev) => [...prev, pr]));
+      socket.on(`prUpdate:${userId}`, (pr: PR) => setPrs((prev) => [...prev, pr]));
       fetch(`${import.meta.env.VITE_API_URL}/prs/${userId}`)
         .then((res) => res.json())
         .then(setPrs);
