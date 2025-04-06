@@ -2,6 +2,7 @@
   "type": "module",
   "dependencies": {
     "@pulumi/github": "^6.7.0",
-    "@pulumi/pulumi": "^3.160.0"
+    "@pulumi/pulumi": "^3.160.0",
+    "axios": "^1.8.4"
   }
 }

@@ -37,8 +37,3 @@ async function getSecrets() {
 
 export default getSecrets;
 
-// Test run
-// (async () => {
-//   const secrets = await getSecrets();
-//   console.log("✅ Secrets Retrieved:", secrets);
-// })();

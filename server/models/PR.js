@@ -7,6 +7,7 @@ const prSchema = new mongoose.Schema({
   sentiment: Number,
   carbonImpact: Number,
   points: Number,
+  repository: String,
 });
 
 const PR = mongoose.model("PR", prSchema);
