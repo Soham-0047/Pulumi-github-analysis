@@ -14,14 +14,14 @@ const app = express();
 const server = createServer(app);
 const io = new SocketIOServer(server, {
   cors: {
-    origin: ["http://localhost:5173","https://greencode-setiment.onrender.com"], // <-- ✅ Allow all origins (for dev only)
+    origin: ["http://localhost:5173","https://greencode-setiment.onrender.com","greencode-sentiment.netlify.app"], // <-- ✅ Allow all origins (for dev only)
     methods: ["GET", "POST"],
   }
 });
 
 // Use this at the top of the file, before routes
 app.use(cors({
-  origin: ["http://localhost:5173","https://greencode-setiment.onrender.com"],
+  origin: ["http://localhost:5173","https://greencode-setiment.onrender.com","greencode-sentiment.netlify.app"],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
 }));
