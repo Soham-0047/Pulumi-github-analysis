@@ -11,6 +11,7 @@ This README explains how to use the app, get a GitHub PAT, and set it up locally
 ---
 
 ## Live Demo
+- **Full Web App**: [https://greencode-sentiment.netlify.app](https://greencode-sentiment.netlify.app)
 - **Youtube**: [https://youtu.be/UcdxpkgVb6o](https://youtu.be/UcdxpkgVb6o)
 
 ---
