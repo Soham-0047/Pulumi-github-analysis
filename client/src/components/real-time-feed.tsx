@@ -21,7 +21,7 @@ export function RealTimeFeed({ userId }: { userId: string | null }) {
   const [pullRequests, setPullRequests] = useState<PullRequest[]>([]);
 
   useEffect(() => {
-    const socket = io("http://localhost:5000"); // Make sure this matches your server URL
+    const socket = io(import.meta.env.VITE_API_URL); // Make sure this matches your server URL
 
     socket.on(`prUpdate:${userId}`, (pr: any) => {
       const mapped: PullRequest = {

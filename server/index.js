@@ -14,14 +14,14 @@ const app = express();
 const server = createServer(app);
 const io = new SocketIOServer(server, {
   cors: {
-    origin: "*", // <-- ✅ Allow all origins (for dev only)
+    origin: ["http://localhost:5173","https://greencode-setiment.onrender.com"], // <-- ✅ Allow all origins (for dev only)
     methods: ["GET", "POST"],
   }
 });
 
 // Use this at the top of the file, before routes
 app.use(cors({
-  origin: "*", // 🔥 allow all
+  origin: ["http://localhost:5173","https://greencode-setiment.onrender.com"],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
 }));

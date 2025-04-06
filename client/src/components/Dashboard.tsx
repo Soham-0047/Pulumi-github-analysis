@@ -15,7 +15,7 @@ export default function Dashboard() {
   const [repo, setRepo] = useState("");
   const [prs, setPrs] = useState([]);
 
-  const socket = io("http://localhost:5000", {
+  const socket = io(import.meta.env.VITE_API_URL, {
     transports: ["websocket"], // prevent fallback polling weirdness
   });
 
@@ -25,7 +25,7 @@ export default function Dashboard() {
     setIsLoading(true);
 
     try {
-      const res = await fetch("http://localhost:5000/users", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/users`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ githubToken, repo }),
@@ -52,7 +52,7 @@ export default function Dashboard() {
 
     try {
       setIsLoading(true); // optional: show spinner or disable button
-      const res = await fetch("http://localhost:5000/analyze-pr", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/analyze-pr`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userId, prId }),
@@ -75,14 +75,14 @@ export default function Dashboard() {
   useEffect(() => {
     if (userId) {
       socket.on(`prUpdate:${userId}`, (pr) => setPrs((prev) => [...prev, pr]));
-      fetch(`http://localhost:5000/prs/${userId}`)
+      fetch(`${import.meta.env.VITE_API_URL}/prs/${userId}`)
         .then((res) => res.json())
         .then(setPrs);
       console.log(prs);
     }
   }, [userId]);
 
-
+  console.log(import.meta.env.VITE_API_URL);
   return (
     <div className="min-h-screen bg-gray-50">
       <header className="border-b bg-white py-4 shadow-sm">

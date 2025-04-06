@@ -10,7 +10,7 @@ import {
 import { Trophy } from "lucide-react"
 
 // --- Setup socket once (outside component)
-const socket = io("http://localhost:5000")
+const socket = io(import.meta.env.VITE_API_URL)
 
 interface LeaderboardUser {
   id: string
